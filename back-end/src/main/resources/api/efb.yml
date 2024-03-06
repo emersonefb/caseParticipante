@@ -1,0 +1,299 @@
+swagger: "2.0"
+info:
+  description: "This service handle the Calculator Installments"
+  version: "1.0.0"
+  title: "Calculator Installments Service"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "NOSE"
+basePath: "/back-end"
+tags:
+  - name: "Calculator Installments"
+
+schemes:
+  - "http"
+  - "https"
+
+paths:
+  /Participante/cadastrar:
+    post:
+      tags:
+        - "Participante"
+      summary: "Send to Participante"
+      operationId: "cadastrar"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Object with the add new Participante"
+          required: true
+          schema:
+            $ref: "#/definitions/Participante"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Participante"
+
+  /Participante/update:
+    put:
+      tags:
+        - "Participante"
+      summary: "Send to Participante"
+      operationId: "update"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Object with the update Participante"
+          required: true
+          schema:
+            $ref: "#/definitions/Participante"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Participante"
+
+  /Participante/deletar/{codigo}:
+    delete:
+      tags:
+        - "Participante"
+      summary: "delete Participante"
+      operationId: "deletar"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: path
+          name: "codigo"
+          description: "id with the delete Participante"
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: "OK"
+          type: string
+
+  /Participante/deletarLista:
+    post:
+      tags:
+        - "Participante"
+      summary: "delete Lista de Participante"
+      operationId: "deletarLista"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Object with the update Participante"
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+      responses:
+        "200":
+          description: "OK"
+          type: string
+
+  /Participante/buscar/{codigo}:
+    get:
+      tags:
+        - "Participante"
+      summary: "delete Participante"
+      operationId: "buscar"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: path
+          name: "codigo"
+          description: "id with the buscar Participante"
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Participante"
+
+  /Participante/listar:
+    post:
+      tags:
+        - "teste"
+      summary: "Recebe (input) ParticipanteSearch., output = ParticipantePage"
+      operationId: "listar"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Object with the ParticipanteSearch"
+          required: true
+          schema:
+            $ref: "#/definitions/ParticipanteSearch"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/ParticipantePage"
+
+  /Participante/listarNomes/{nome}:
+    get:
+      tags:
+        - "teste"
+      summary: "Recebe (input) ParticipanteSearch., output = ParticipantePage"
+      operationId: "listarNomes"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: path
+          name: "nome"
+          description: "id with the buscar Participante"
+          type: string
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: array
+            items:
+              type: string
+
+definitions:
+
+  ParticipanteSearch:
+    type: object
+    properties:
+      size:
+        type: integer
+        example: 1
+      page:
+        type: integer
+        example: 1
+      codigoExterno:
+        type: string
+      nome:
+        type: string
+
+  ParticipantePage:
+    type: object
+    properties:
+      totalPages:
+        type: integer
+        example: 1
+      total_elements:
+        type: integer
+        example: 1
+      page:
+        type: integer
+        example: 1
+      per_page:
+        type: integer
+        example: 1
+      has_next:
+        type: boolean
+      has_prev:
+        type: boolean
+      content:
+        type: array
+        items:
+          $ref: '#/definitions/Participante'
+
+  Participante:
+    type: object
+    properties:
+      codigo:
+        type: integer
+        format: int64
+      codigoExterno:
+        type: string
+      nome:
+        type: string
+      email:
+        type: string
+      cpf:
+        type: string
+      cpfAplicavel:
+        type: boolean
+      sexo:
+        type: string
+      estadoCivil:
+        type: string
+      conjuge:
+        type: string
+      documentoIdentificacao:
+        type: string
+      obsSemImpact:
+        type: string
+      condicaoPessoal:
+        type: string
+      telefone:
+        type: string
+      celular:
+        type: string
+      validateFichaCadastral:
+        type: string
+        example: "00-00-0000"
+      dataNascimento:
+        type: string
+        example: "00-00-0000"
+      habilitaEnvioToken:
+        type: boolean
+      status:
+        type: boolean
+      ppe:
+        type: boolean
+      assinaDigital:
+        type: boolean
+      enderecoList:
+        type: array
+        items:
+          $ref: '#/definitions/Endereco'
+
+  Endereco:
+    type: object
+    properties:
+      idEndereco:
+        type: integer
+        format: int64
+      cep:
+        type: string
+      logradouro:
+        type: string
+      numero:
+        type: integer
+        example: 1
+      complemento:
+        type: string
+      cidade:
+        type: string
+      estado:
+        type: string
+      pais:
+        type: string
+
+
+
+
