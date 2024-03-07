@@ -1,0 +1,123 @@
+.p {
+    font-family: Lato;
+}
+
+.main-title{
+  font-size: large;
+}
+  
+#root {
+    padding: 30px;
+}
+  
+.mat-fill-codigo{
+    width: 7% !important;
+}
+
+.mat-fill-codigo-externo{
+    width: 12% !important;
+}
+
+.mat-fill-nome{
+  width: 25% !important;
+}
+
+.mat-fill-email{
+  width: 25% !important;
+}
+
+.mat-fill-CPF{
+    width: 15% !important;
+}
+
+.mat-fill-BOX{
+    width: 20% !important;
+}
+
+.mat-fill-sexo{
+  width: 20% !important;
+}
+
+.mat-fill-estado-civil{
+  width: 25% !important;
+}
+
+.mat-fill-conjuge{
+    width: 25% !important;
+}
+
+.mat-fill-docIdentific{
+  width: 25% !important;
+}
+
+.mat-fill-obsSemImpct{
+  width: 30% !important;
+}
+
+.mat-fill-telefone{
+  width: 25% !important;
+  text-align: center;
+}
+
+.mat-fill-telefone-ddi{
+  width: 25% !important;
+  text-align: center;
+}
+
+.mat-fill-dtFicha{
+  width: 25% !important;
+}
+
+.register-form {
+margin: auto;
+}
+.example-container mat-form-field + mat-form-field {
+margin-left: 8px;
+background-color: blue;
+}
+.form-group{
+width: 100%;
+}
+
+.mat-mdc-form-field-name {
+    --mat-mdc-form-field-floating-label-scale: 0.75;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-width: 0;
+    text-align: left;
+    padding-inline: 5px;
+}
+
+.mat-mdc-form-field {
+    padding-right: 2px;
+    padding-left: 2px;
+    max-height: 70px !important;
+}
+
+.btn-fim{
+  height: 10%;
+  margin: 5px 12px 7px 12px;
+  /* display: flex; */
+  /* flex-flow: row wrap; */
+  /* justify-content: end; */
+  box-shadow: 0px 0px 6px rgba(0,0,0,.4);
+}
+
+.parent {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:  end;
+}
+
+.mat-icon {
+  -webkit-user-select: none;
+  user-select: none;
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 16px;
+  width: 30px;
+  overflow: hidden;
+}
