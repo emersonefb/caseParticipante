@@ -1,0 +1,30 @@
+Atue como um desenvolvedor Full Stack especialista em Java Spring Boot e Angular. 
+
+Preciso criar uma aplicação cliente ("Credit Proposal Service") que se conecta e utiliza a engine de workflow/esteira "Esteria" criada anteriormente para orquestrar o processo de solicitação de crédito.
+
+Gere o código completo organizado nos seguintes arquivos:
+
+### 1. BACKEND (Spring Boot 3 / Java 17+)
+- Arquivo application.properties:
+  - Definir a porta do servidor para 8081.
+  - Definir a propriedade 'esteria.engine.url=http://localhost:8080'.
+
+- Arquivo EsteriaClient.java (Service):
+  - Utilizar a classe `org.springframework.web.client.RestClient` para consumir o backend do Esteria (porta 8080).
+  - Método `startProcess(String pipelineId, String processId, Map<String, Object> payload)` para fazer um POST no endpoint '/pipelines/{pipelineId}/start/{processId}'.
+  - Método `getProcessStatus(String processId)` para fazer um GET no endpoint '/pipelines/instances/{processId}'.
+
+- Arquivo CreditProposalController.java (RestController):
+  - Mapear a rota base `/api/proposals` com suporte a CORS (`@CrossOrigin(origins = "*")`).
+  - Endpoint `POST /api/proposals`: recebe um JSON com { customerName, document, amount }, gera um ID único "PROP-XXXXXX", chama a esteira "CREDIT_APPROVAL" via EsteriaClient e retorna o ID e o payload do processo.
+  - Endpoint `GET /api/proposals/{proposalId}/status`: consulta o status atual da proposta na engine via EsteriaClient e devolve para o cliente.
+
+### 2. FRONTEND (Angular 17+ Standalone Component)
+- Arquivo proposal-portal.component.ts:
+  - Criar um componente Angular standalone chamado `ProposalPortalComponent` usando HTML e CSS inline (template/styles).
+  - Incluir formulário para o usuário preencher Nome, CPF e Valor Solicitado.
+  - Enviar requisição via HttpClient para `http://localhost:8081/api/proposals`.
+  - Ao enviar, esconder o formulário e exibir um painel de acompanhamento exibindo o ID da proposta e o estado atual da esteira (ex: "CREDIT_APPROVAL", "VALIDACAO", "CONCLUIDO").
+  - Adicionar um botão para atualizar o status em tempo real chamando o endpoint de consulta por ID.
+
+Gere o código de forma limpa, compilável e seguindo as melhores práticas das duas frameworks.
